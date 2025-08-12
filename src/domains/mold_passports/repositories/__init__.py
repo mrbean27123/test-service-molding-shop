@@ -1,0 +1,5 @@
+from domains.mold_passports.repositories.mold_cavity import MoldCavityRepository
+from domains.mold_passports.repositories.mold_core import MoldCoreRepository
+from domains.mold_passports.repositories.mold_passport import MoldPassportRepository
+from domains.mold_passports.repositories.mold_passport_data_asc import MoldPassportDataASCRepository
+from domains.mold_passports.repositories.mold_passport_data_gsc import MoldPassportDataGSCRepository

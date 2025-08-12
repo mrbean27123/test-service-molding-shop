@@ -1,0 +1,2 @@
+from domains.molding_flasks.models.associations import molding_flask_areas
+from domains.molding_flasks.models.molding_flask import MoldingFlask

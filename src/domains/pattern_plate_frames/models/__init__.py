@@ -1,0 +1,2 @@
+from domains.pattern_plate_frames.models.associations import pattern_plate_frame_molding_areas
+from domains.pattern_plate_frames.models.pattern_plate_frame import PatternPlateFrame

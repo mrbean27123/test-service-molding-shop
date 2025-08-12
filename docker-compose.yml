@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:17
+    container_name: molding-shop-service-postgres
+    restart: unless-stopped
+    ports:
+      - "${POSTGRES_EXTERNAL_PORT:-5432}:${POSTGRES_PORT:-5432}"
+    volumes:
+      - molding-shop-service-postgres-data:/var/lib/postgresql/data
+    networks:
+      - molding-shop-service-network
+    env_file:
+      - .env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB -h localhost || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  molding-shop-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: molding-shop-service-app
+    restart: unless-stopped
+    ports:
+      - "${APP_EXTERNAL_PORT:-8000}:${APP_PORT:-8000}"
+    volumes:
+      # For development - mount the code for hot reload
+      - ./src:/usr/src/app/src
+      # For logs (optional)
+      # - ./logs:/usr/src/app/logs
+    working_dir: /usr/src/app
+    networks:
+      - molding-shop-service-network
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+
+volumes:
+  molding-shop-service-postgres-data:
+    name: molding-shop-service-postgres-data
+
+networks:
+  molding-shop-service-network:
+    driver: bridge
+    name: molding-shop-service-network

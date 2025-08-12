@@ -1,0 +1,2 @@
+from domains.molding_areas.models.associations import molding_area_casting_technologies
+from domains.molding_areas.models.molding_area import MoldingArea

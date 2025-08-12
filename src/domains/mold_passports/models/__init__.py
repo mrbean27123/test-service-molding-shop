@@ -1,0 +1,5 @@
+from domains.mold_passports.models.mold_cavity import MoldCavity
+from domains.mold_passports.models.mold_core import MoldCore
+from domains.mold_passports.models.mold_passport import MoldPassport
+from domains.mold_passports.models.mold_passport_data_asc import MoldPassportDataASC
+from domains.mold_passports.models.mold_passport_data_gsc import MoldPassportDataGSC
