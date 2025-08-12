@@ -28,7 +28,7 @@ class Resin(BaseORM, BusinessEntityMetadataMixin):
     )
     brand: Mapped[str] = mapped_column(String(255))
     name: Mapped[str] = mapped_column(String(255))
-    serial_number: Mapped[str] = mapped_column(String(3))
+    serial_number: Mapped[str] = mapped_column(String(7))
 
     mold_core_batches: Mapped[list["MoldCoreBatch"]] = safe_relationship(back_populates="resin")
 

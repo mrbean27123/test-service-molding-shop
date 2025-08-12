@@ -377,7 +377,7 @@ class MoldPassportService:
                             MoldCoreCreateOperation(action="create", data=mold_core_create_data)
                             for mold_core_create_data in mold_cavity_data.mold_cores
                         ]
-                        await self._handle_mold_cores_operations(
+                        await self._handle_mold_core_operations(
                             created_mold_cavity,
                             mold_core_operations
                         )
@@ -400,7 +400,7 @@ class MoldPassportService:
                         )
 
                     if mold_cavity_data.mold_core_operations:
-                        await self._handle_mold_cores_operations(
+                        await self._handle_mold_core_operations(
                             updated_mold_cavity,
                             mold_cavity_data.mold_core_operations
                         )
@@ -419,7 +419,7 @@ class MoldPassportService:
                             )
                         )
 
-    async def _handle_mold_cores_operations(
+    async def _handle_mold_core_operations(
         self,
         mold_cavity: MoldCavity,
         operations: list[

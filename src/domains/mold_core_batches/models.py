@@ -42,7 +42,7 @@ class MoldCoreBatch(BaseORM, BusinessEntityMetadataMixin):
         ForeignKey("resins.id", ondelete="RESTRICT"),
         nullable=False
     )
-    triethylamine_id: Mapped[uuid.UUID] = mapped_column(
+    triethylamine_id: Mapped[uuid.UUID | None] = mapped_column(
         ForeignKey("triethylamines.id", ondelete="RESTRICT"),
         nullable=False
     )

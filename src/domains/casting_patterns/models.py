@@ -1,7 +1,7 @@
 import uuid
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Enum, ForeignKey, String, UUID
+from sqlalchemy import Enum, ForeignKey, String, UUID, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
 from domains.shared.enums import AssetStatus
@@ -16,6 +16,13 @@ if TYPE_CHECKING:
 class CastingPattern(BaseORM, BusinessEntityMetadataMixin):
     """SQLAlchemy ORM model for Casting Pattern [business entity]."""
     __tablename__ = "casting_patterns"
+    __table_args__ = (
+        UniqueConstraint(
+            "casting_product_id",
+            "serial_number",
+            name="uq_casting_pattern_casting_product_id_serial_number"
+        ),
+    )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
 
@@ -26,7 +33,7 @@ class CastingPattern(BaseORM, BusinessEntityMetadataMixin):
     )
 
     casting_product: Mapped["CastingProduct"] = safe_relationship(back_populates="casting_patterns")
-    serial_number: Mapped[str] = mapped_column(String(255), unique=True)
+    serial_number: Mapped[str] = mapped_column(String(255))
     status: Mapped[AssetStatus] = mapped_column(
         Enum(AssetStatus, values_callable=lambda enum_cls: [e.value for e in enum_cls])
     )

@@ -55,7 +55,7 @@ class MoldPassportCreate(MoldPassportInputBase):
     pressing_pressure: float | None = None
 
     sequence_in_shift: int | None = Field(None, ge=1)
-    assembly_timestamp: datetime | None
+    assembly_timestamp: datetime | None = None
 
     is_defective: bool = False
 
@@ -134,8 +134,8 @@ class MoldPassportShortResponse(MoldPassportLookupResponse):
 class MoldPassportDetailResponse(MoldPassportResponseBase, BusinessEntityMetadataSchemaMixin):
     is_complete: bool
 
-    primary_casting_product_name: str | None
-    reference_code: str | None
+    primary_casting_product_name: str
+    reference_code: str
 
     molding_area: "MoldingAreaShortResponse"
     casting_technology: "CastingTechnologyShortResponse"
@@ -146,7 +146,7 @@ class MoldPassportDetailResponse(MoldPassportResponseBase, BusinessEntityMetadat
     data_gsc: Union["MoldPassportDataGSCDetailResponse", None] = None
     data_asc: Union["MoldPassportDataASCDetailResponse", None] = None
 
-    marking_year: int | None
+    marking_year: int
     mold_cavities: list["MoldCavityDetailResponse"]
 
     pressing_pressure: float | None = None
