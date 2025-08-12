@@ -1,4 +1,5 @@
 from fastapi import APIRouter, FastAPI
+from starlette.middleware.cors import CORSMiddleware
 
 from domains.casting_patterns.api import router as casting_patterns_api_router
 from domains.casting_products.api import router as casting_products_api_router
@@ -24,6 +25,15 @@ import infrastructure.database.models.all_models  # noqa: F401
 
 
 app = FastAPI(title=settings.SERVICE_NAME)
+
+# TODO: Remove this:
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app_router = APIRouter(prefix="/api")
 app_router.include_router(casting_patterns_api_router)
