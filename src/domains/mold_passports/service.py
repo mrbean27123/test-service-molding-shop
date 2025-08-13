@@ -192,13 +192,13 @@ class MoldPassportService:
             attribute_names=["data_gsc", "data_asc"]
         )
 
-        if mold_passport_data.casting_technology_id == 1 and mold_passport_data.data_gsc_operation:
+        if mold_passport.casting_technology_id == 1 and mold_passport_data.data_gsc_operation:
             await self._handle_mold_passport_data_gsc_operation(
                 mold_passport,
                 mold_passport_data.data_asc_operation
             )
 
-        if mold_passport_data.casting_technology_id == 2 and mold_passport_data.data_asc:
+        if mold_passport.casting_technology_id == 2 and mold_passport_data.data_asc:
             await self._handle_mold_passport_data_asc_operation(
                 mold_passport,
                 mold_passport_data.data_asc
