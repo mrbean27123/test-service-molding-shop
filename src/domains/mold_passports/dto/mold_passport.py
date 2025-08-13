@@ -14,8 +14,8 @@ class MoldPassportCreateDTO(CreateDTOBase):
 
     pressing_pressure: float | None = None
 
-    sequence_in_shift: int | None
-    assembly_timestamp: datetime | None
+    sequence_in_shift: int | None = None
+    assembly_timestamp: datetime | None = None
 
     status: ConsumableStatus | None = None
 
@@ -31,8 +31,8 @@ class MoldPassportUpdateDTO(UpdateDTOBase):
 
     pressing_pressure: float | None = None
 
-    sequence_in_shift: int | None
-    assembly_timestamp: datetime | None
+    sequence_in_shift: int | None = None
+    assembly_timestamp: datetime | None = None
 
     status: ConsumableStatus | None = None
 
