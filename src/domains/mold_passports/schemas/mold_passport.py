@@ -5,7 +5,7 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field
 
 from domains.mold_passports.dto import MoldPassportCreateDTO, MoldPassportUpdateDTO
-from domains.shared.enums import AssetStatus, ConsumableStatus
+from domains.shared.enums import ConsumableStatus
 from infrastructure.schemas.base import (
     BusinessEntityMetadataSchemaMixin,
     InputBase,
@@ -154,7 +154,7 @@ class MoldPassportDetailResponse(MoldPassportResponseBase, BusinessEntityMetadat
     sequence_in_shift: int | None = None
     assembly_timestamp: datetime | None = None
 
-    status: AssetStatus
+    status: ConsumableStatus
 
     notes: str | None = None
 
@@ -177,7 +177,7 @@ class MoldPassportListItemResponse(MoldPassportResponseBase, SoftDeleteMetadataS
     sequence_in_shift: int | None = None
     assembly_timestamp: datetime | None = None
 
-    status: AssetStatus
+    status: ConsumableStatus
 
 
 class MoldPassportLookupsListResponse(ListResponse[MoldPassportLookupResponse]):
