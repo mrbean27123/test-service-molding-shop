@@ -195,13 +195,13 @@ class MoldPassportService:
         if mold_passport.casting_technology_id == 1 and mold_passport_data.data_gsc_operation:
             await self._handle_mold_passport_data_gsc_operation(
                 mold_passport,
-                mold_passport_data.data_asc_operation
+                mold_passport_data.data_gsc_operation
             )
 
-        if mold_passport.casting_technology_id == 2 and mold_passport_data.data_asc:
+        if mold_passport.casting_technology_id == 2 and mold_passport_data.data_asc_operation:
             await self._handle_mold_passport_data_asc_operation(
                 mold_passport,
-                mold_passport_data.data_asc
+                mold_passport_data.data_asc_operation
             )
 
         if mold_passport_data.mold_cavity_operations:
